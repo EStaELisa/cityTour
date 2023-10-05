@@ -1,22 +1,50 @@
 package com.example.citytour.models;
-import com.example.citytour.AssetHelper;
 
 public class Attraction {
-    private static String pathnameInfo = "app/assets/attractions.json";
     private String name;
-    private String info;
+    private int infoText;
+    private int imageResourceId;
 
-    public Attraction(String name, String jsonKey) {
+    // Constructor
+    public Attraction(String name, int infoText, int imageResourceId) {
         this.name = name;
-        this.info = String.valueOf(AssetHelper.getTextByKey(pathnameInfo, jsonKey));
+        this.infoText = infoText;
+        this.imageResourceId = imageResourceId;
     }
 
-
+    // Getters
     public String getName() {
         return name;
     }
 
-    public String getInfo() {
-        return info;
+    public int getInfoText() {
+        return infoText;
+    }
+
+    public int getImageResourceId() {
+        return imageResourceId;
+    }
+
+    // Setters (if necessary)
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setInfoText(int infoText) {
+        this.infoText = infoText;
+    }
+
+    public void setImageResourceId(int imageResourceId) {
+        this.imageResourceId = imageResourceId;
+    }
+
+    // If required, you can override the toString() for better debugging
+    @Override
+    public String toString() {
+        return "Attraction{" +
+                "name='" + name + '\'' +
+                ", infoText='" + infoText + '\'' +
+                ", imageResourceId=" + imageResourceId +
+                '}';
     }
 }

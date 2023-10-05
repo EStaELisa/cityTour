@@ -12,7 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.citytour.databinding.FragmentFirstBinding;
 import com.example.citytour.models.Attraction;
-import com.example.citytour.models.Attractions;
+import com.example.citytour.models.AttractionManager;
 
 public class FirstFragment extends Fragment {
 
@@ -34,8 +34,8 @@ public class FirstFragment extends Fragment {
 
         // Changes go to to desired attraction
         TextView goToText = view.findViewById(R.id.goTo_text);
-        Attraction currentAttraction = Attractions.getAttraction();
-        goToText.setText("Go to " + currentAttraction.getName());
+        Attraction currentAttraction = AttractionManager.getInstance().getCurrentAttraction();
+        goToText.setText(currentAttraction.getName());
 
 
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {

@@ -12,7 +12,7 @@ import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.citytour.databinding.FragmentSecondBinding;
 import com.example.citytour.models.Attraction;
-import com.example.citytour.models.Attractions;
+import com.example.citytour.models.AttractionManager;
 
 public class SecondFragment extends Fragment {
 
@@ -32,25 +32,22 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Get current Attraction
-        Attraction currentAttraction = Attractions.getAttraction();
+        // Get Name Attraction
+        TextView goToText = view.findViewById(R.id.info_heading);
+        Attraction currentAttraction = AttractionManager.getInstance().getCurrentAttraction();
+        goToText.setText("Go to " + currentAttraction.getName());
 
-        // Changes name to desired attraction
-        TextView info_heading = view.findViewById(R.id.info_heading);
-        info_heading.setText(currentAttraction.getName());
+        // Get Name Attraction
+        TextView infoText = view.findViewById(R.id.info);
+        infoText.setText(currentAttraction.getInfoText());
 
-        // Changes info text to desired attraction
-        TextView info = view.findViewById(R.id.info);
-        info.setText(currentAttraction.getInfo());
-
-        // Sets counter to new attraction
-        Attractions.goToNextAttraction();
 
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
+                AttractionManager.getInstance().moveToNextAttraction();
             }
         });
     }
