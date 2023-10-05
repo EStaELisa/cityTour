@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.citytour.databinding.FragmentSecondBinding;
+import com.example.citytour.models.Attraction;
 import com.example.citytour.models.Attractions;
 
 public class SecondFragment extends Fragment {
@@ -31,18 +32,16 @@ public class SecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Current Attraction its name + info
-        int currentAttraction = Attractions.getCurrentAttraction();
-        String attractionName = Attractions.getAttractionName(currentAttraction);
-        String attractionInfo = Attractions.getAttractionInfo(currentAttraction);
+        // Get current Attraction
+        Attraction currentAttraction = Attractions.getAttraction();
 
         // Changes name to desired attraction
         TextView info_heading = view.findViewById(R.id.info_heading);
-        info_heading.setText(attractionName);
+        info_heading.setText(currentAttraction.getName());
 
         // Changes info text to desired attraction
         TextView info = view.findViewById(R.id.info);
-        info.setText(attractionInfo);
+        info.setText(currentAttraction.getInfo());
 
         // Sets counter to new attraction
         Attractions.goToNextAttraction();

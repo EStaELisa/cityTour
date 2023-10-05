@@ -1,19 +1,22 @@
 package com.example.citytour.models;
+import com.example.citytour.AssetHelper;
 
 public class Attraction {
-    private static int numberAttractions = 0;
-
-    private int id;
+    private static String pathnameInfo = "app/assets/attractions.json";
     private String name;
-    private String description;
+    private String info;
 
-    // attraction constructor, generates id for each attraction
-    public Attraction(String name, String description){
-        this.id = numberAttractions;
-        numberAttractions +=1;
+    public Attraction(String name, String jsonKey) {
         this.name = name;
-        this.description = description;
+        this.info = String.valueOf(AssetHelper.getTextByKey(pathnameInfo, jsonKey));
     }
 
 
+    public String getName() {
+        return name;
+    }
+
+    public String getInfo() {
+        return info;
+    }
 }
