@@ -27,6 +27,8 @@ public class AttractionManager {
     public void moveToNextAttraction() {
         if (currentIndex < attractions.size() - 1) {
             currentIndex++;
+        } else {
+            instance = null;
         }
     }
 
