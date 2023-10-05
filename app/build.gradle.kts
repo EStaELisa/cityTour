@@ -44,4 +44,8 @@ dependencies {
     implementation("com.fasterxml.jackson.core:jackson-core:2.13.0")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
     implementation("com.fasterxml.jackson.core:jackson-annotations:2.13.0")
+    // OSM Map
+    implementation("org.osmdroid:osmdroid-android:6.1.17")
+    implementation("org.osmdroid:osmdroid-wms:6.1.17")
+    implementation("org.osmdroid:osmdroid-mapsforge:6.1.17")
 }
