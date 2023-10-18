@@ -32,6 +32,7 @@ public class FirstFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        Configuration.getInstance().setUserAgentValue(requireContext().getPackageName());
 
         binding = FragmentFirstBinding.inflate(inflater, container, false);
 
@@ -57,8 +58,8 @@ public class FirstFragment extends Fragment {
         // move the map on a default view point
 
         IMapController mapController = map.getController();
-        mapController.setZoom(9);
-        GeoPoint startPoint = new GeoPoint(48.8583, 2.2944);
+        mapController.setZoom(14);
+        GeoPoint startPoint = new GeoPoint(52.52437, 13.41053);
         mapController.setCenter(startPoint);
 
 
