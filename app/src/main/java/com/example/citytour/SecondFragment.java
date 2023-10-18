@@ -35,7 +35,7 @@ public class SecondFragment extends Fragment {
         // Get Name Attraction
         TextView goToText = view.findViewById(R.id.info_heading);
         Attraction currentAttraction = AttractionManager.getInstance().getCurrentAttraction();
-        goToText.setText("Go to " + currentAttraction.getName());
+        goToText.setText(currentAttraction.getName());
 
         // Get Name Attraction
         TextView infoText = view.findViewById(R.id.info);

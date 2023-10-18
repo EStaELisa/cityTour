@@ -38,7 +38,6 @@ public class Attraction {
         this.imageResourceId = imageResourceId;
     }
 
-    // If required, you can override the toString() for better debugging
     @Override
     public String toString() {
         return "Attraction{" +

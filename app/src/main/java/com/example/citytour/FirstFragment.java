@@ -14,9 +14,18 @@ import com.example.citytour.databinding.FragmentFirstBinding;
 import com.example.citytour.models.Attraction;
 import com.example.citytour.models.AttractionManager;
 
+// Imports for osm
+import org.osmdroid.api.IMapController;
+import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
+import org.osmdroid.util.GeoPoint;
+import org.osmdroid.views.MapView;
+
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
+
+    private MapView map;
 
     @Override
     public View onCreateView(
@@ -25,6 +34,14 @@ public class FirstFragment extends Fragment {
     ) {
 
         binding = FragmentFirstBinding.inflate(inflater, container, false);
+
+        // Initialize MapView
+        map = binding.map;
+        map.setTileSource(TileSourceFactory.MAPNIK);
+
+        map.setBuiltInZoomControls(true);
+        map.setMultiTouchControls(true);
+
         return binding.getRoot();
 
     }
@@ -35,7 +52,14 @@ public class FirstFragment extends Fragment {
         // Changes go to to desired attraction
         TextView goToText = view.findViewById(R.id.goTo_text);
         Attraction currentAttraction = AttractionManager.getInstance().getCurrentAttraction();
-        goToText.setText(currentAttraction.getName());
+        goToText.setText("Go to " + currentAttraction.getName());
+
+        // move the map on a default view point
+
+        IMapController mapController = map.getController();
+        mapController.setZoom(9);
+        GeoPoint startPoint = new GeoPoint(48.8583, 2.2944);
+        mapController.setCenter(startPoint);
 
 
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
@@ -46,6 +70,23 @@ public class FirstFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (map != null) {
+            map.onResume();
+        }
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (map != null) {
+            map.onPause();
+        }
+    }
+
 
     @Override
     public void onDestroyView() {
