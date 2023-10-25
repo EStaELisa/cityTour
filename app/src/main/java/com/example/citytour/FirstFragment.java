@@ -20,6 +20,8 @@ import org.osmdroid.config.Configuration;
 import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
+import org.osmdroid.views.overlay.Marker;
+
 
 public class FirstFragment extends Fragment {
 
@@ -62,6 +64,9 @@ public class FirstFragment extends Fragment {
         GeoPoint startPoint = new GeoPoint(52.52437, 13.41053);
         mapController.setCenter(startPoint);
 
+        // Adds marker for the current attraction
+        addMarker(currentAttraction.getLatitude(), currentAttraction.getLongitude());
+
 
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,6 +76,15 @@ public class FirstFragment extends Fragment {
             }
         });
     }
+
+    private void addMarker(double lat, double lon) {
+        GeoPoint startPoint = new GeoPoint(lat, lon);
+        Marker startMarker = new Marker(map);
+        startMarker.setPosition(startPoint);
+        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+        map.getOverlays().add(startMarker);
+    }
+
 
     @Override
     public void onResume() {
