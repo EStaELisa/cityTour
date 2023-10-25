@@ -2,6 +2,9 @@ package com.example.citytour;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -67,7 +70,7 @@ public class FirstFragment extends Fragment {
         mapController.setCenter(startPoint);
 
         // Adds marker for the current attraction
-        addMarker(currentAttraction.getLatitude(), currentAttraction.getLongitude());
+        addMarker(currentAttraction.getLatitude(), currentAttraction.getLongitude(), "attraction");
 
         // Try getting the current location
         getLastKnownLocationAndAddMarker();
@@ -81,13 +84,27 @@ public class FirstFragment extends Fragment {
         });
     }
 
-    private void addMarker(double lat, double lon) {
-        GeoPoint startPoint = new GeoPoint(lat, lon);
-        Marker startMarker = new Marker(map);
-        startMarker.setPosition(startPoint);
-        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-        map.getOverlays().add(startMarker);
+    private void addMarker(double lat, double lon, String type) {
+        GeoPoint point = new GeoPoint(lat, lon);
+        Marker marker = new Marker(map);
+        marker.setPosition(point);
+        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+
+        // Set icon based on type
+        if ("location".equals(type)) {
+            marker.setIcon(resizeDrawable(R.drawable.fireworks, 24, 24));
+        }
+
+        map.getOverlays().add(marker);
     }
+
+    private Drawable resizeDrawable(int drawableId, int width, int height) {
+        Drawable image = getResources().getDrawable(drawableId);
+        Bitmap b = ((BitmapDrawable)image).getBitmap();
+        Bitmap bitmapResized = Bitmap.createScaledBitmap(b, width, height, false);
+        return new BitmapDrawable(getResources(), bitmapResized);
+    }
+
 
 
     private void getLastKnownLocationAndAddMarker() {
@@ -101,7 +118,7 @@ public class FirstFragment extends Fragment {
         if (lastKnownLocation != null) {
             double latitude = lastKnownLocation.getLatitude();
             double longitude = lastKnownLocation.getLongitude();
-            addMarker(latitude, longitude);
+            addMarker(latitude, longitude, "location");
         }
     }
 
