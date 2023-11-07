@@ -35,6 +35,9 @@ public class AttractionManager {
         }
     }
 
-    // Add any other methods you need...
+    // This method is for testing purposes only and resets the singleton instance.
+    public static void resetInstance() {
+        instance = null;
+    }
 }
 
