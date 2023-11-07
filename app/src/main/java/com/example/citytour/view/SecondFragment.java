@@ -1,4 +1,4 @@
-package com.example.citytour;
+package com.example.citytour.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,9 +10,10 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.citytour.R;
 import com.example.citytour.databinding.FragmentSecondBinding;
 import com.example.citytour.models.Attraction;
-import com.example.citytour.models.AttractionManager;
+import com.example.citytour.controller.AttractionManager;
 
 public class SecondFragment extends Fragment {
 

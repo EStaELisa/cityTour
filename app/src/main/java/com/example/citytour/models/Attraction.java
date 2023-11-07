@@ -27,13 +27,4 @@ public class Attraction {
 
     public double getLongitude(){return longitude;}
 
-
-
-    @Override
-    public String toString() {
-        return "Attraction{" +
-                "name='" + name + '\'' +
-                ", infoText='" + infoText + '\'' +
-                '}';
-    }
 }

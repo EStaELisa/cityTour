@@ -1,7 +1,8 @@
-package com.example.citytour;
+package com.example.citytour.view;
 
 import android.os.Bundle;
 
+import com.example.citytour.R;
 import com.example.citytour.models.Attraction;
 import com.google.android.material.snackbar.Snackbar;
 

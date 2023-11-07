@@ -1,4 +1,7 @@
-package com.example.citytour.models;
+package com.example.citytour.controller;
+
+import com.example.citytour.models.Attraction;
+import com.example.citytour.models.AttractionHelper;
 
 import java.util.List;
 

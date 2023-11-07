@@ -1,4 +1,4 @@
-package com.example.citytour;
+package com.example.citytour.view;
 
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -19,9 +19,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.citytour.R;
 import com.example.citytour.databinding.FragmentFirstBinding;
 import com.example.citytour.models.Attraction;
-import com.example.citytour.models.AttractionManager;
+import com.example.citytour.controller.AttractionManager;
 
 // Imports for osm
 import org.osmdroid.api.IMapController;
