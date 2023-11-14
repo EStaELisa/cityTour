@@ -15,7 +15,7 @@ import com.example.citytour.databinding.FragmentSecondBinding;
 import com.example.citytour.models.Attraction;
 import com.example.citytour.controller.AttractionManager;
 
-public class SecondFragment extends Fragment {
+public class InfoFragment extends Fragment {
 
     private FragmentSecondBinding binding;
 
@@ -42,15 +42,8 @@ public class SecondFragment extends Fragment {
         TextView infoText = view.findViewById(R.id.info);
         infoText.setText(currentAttraction.getInfoText());
 
-
-        binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(SecondFragment.this)
-                        .navigate(R.id.action_SecondFragment_to_FirstFragment);
-                AttractionManager.getInstance().moveToNextAttraction();
-            }
-        });
+        // Button, to get to the next attraction
+        binding.buttonSecond.setOnClickListener(new ButtonClickListener(this, R.id.action_SecondFragment_to_FirstFragment));
     }
 
     @Override

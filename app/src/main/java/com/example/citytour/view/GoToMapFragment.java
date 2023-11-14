@@ -34,7 +34,7 @@ import org.osmdroid.views.overlay.Marker;
 import android.Manifest;
 
 
-public class FirstFragment extends Fragment {
+public class GoToMapFragment extends Fragment {
 
     private FragmentFirstBinding binding;
     private MapView map;
@@ -76,13 +76,8 @@ public class FirstFragment extends Fragment {
         // Try getting the current location
         getLastKnownLocationAndAddMarker();
 
-        binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                NavHostFragment.findNavController(FirstFragment.this)
-                        .navigate(R.id.action_FirstFragment_to_SecondFragment);
-            }
-        });
+        // Button to get to the InfoFragment
+        binding.buttonFirst.setOnClickListener(new ButtonClickListener(this, R.id.action_FirstFragment_to_SecondFragment));
     }
 
     private void addMarker(double lat, double lon, String type) {
