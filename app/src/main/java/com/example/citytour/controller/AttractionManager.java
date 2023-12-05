@@ -5,7 +5,7 @@ import com.example.citytour.models.AttractionHelper;
 
 import java.util.List;
 
-public class AttractionManager {
+public class AttractionManager implements AttractionManagerInterface {
 
     private static AttractionManager instance;
 

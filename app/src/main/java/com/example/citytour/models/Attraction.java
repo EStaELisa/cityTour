@@ -1,6 +1,6 @@
 package com.example.citytour.models;
 
-public class Attraction {
+public class Attraction implements AttractionInterface {
     private String name;
     private int infoText;
     private double latitude;
