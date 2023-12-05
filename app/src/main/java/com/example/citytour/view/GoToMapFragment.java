@@ -101,8 +101,6 @@ public class GoToMapFragment extends Fragment {
         return new BitmapDrawable(getResources(), bitmapResized);
     }
 
-
-
     private void getLastKnownLocationAndAddMarker() {
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         String locationProvider = LocationManager.GPS_PROVIDER;

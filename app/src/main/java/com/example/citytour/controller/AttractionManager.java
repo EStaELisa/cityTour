@@ -16,13 +16,6 @@ public class AttractionManager {
         attractions = AttractionHelper.getDefaultAttractions();
     }
 
-    public static AttractionManager getInstance() {
-        if (instance == null) {
-            instance = new AttractionManager();
-        }
-        return instance;
-    }
-
     public Attraction getCurrentAttraction() {
         return attractions.get(currentIndex);
     }
@@ -35,9 +28,21 @@ public class AttractionManager {
         }
     }
 
+    public static AttractionManager getInstance() {
+        if (instance == null) {
+            instance = new AttractionManager();
+        }
+        return instance;
+    }
+
     // This method is for testing purposes only and resets the singleton instance.
     public static void resetInstance() {
         instance = null;
+    }
+
+    // Für Testzwecke
+    public static void setInstance(AttractionManager mockInstance) {
+        instance = mockInstance;
     }
 }
 
