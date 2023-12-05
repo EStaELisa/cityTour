@@ -5,8 +5,15 @@ import com.example.citytour.R;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * attractionHelper creates list of attractions
+ */
 public class AttractionHelper {
 
+    /**
+     * creates list of attractions
+     * @return list of attractions
+     */
     public static List<Attraction> getDefaultAttractions() {
         List<Attraction> attractions = new ArrayList<>();
 

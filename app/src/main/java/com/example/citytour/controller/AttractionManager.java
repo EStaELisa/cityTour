@@ -5,21 +5,44 @@ import com.example.citytour.models.AttractionHelper;
 
 import java.util.List;
 
+/**
+ * manages attractions (controller)
+ */
 public class AttractionManager implements AttractionManagerInterface {
 
+    /**
+     * instance of AttractionManager
+     */
     private static AttractionManager instance;
 
+    /**
+     * list with all attractions to be visited
+     */
     private List<Attraction> attractions;
+
+    /**
+     * index of current attraction
+     */
     private int currentIndex = 0;
 
+    /**
+     * private constructor to ensure that only one instance of AttractionManager exists
+     */
     private AttractionManager() {
         attractions = AttractionHelper.getDefaultAttractions();
     }
 
+    /**
+     * returns current attraction
+     * @return current attraction
+     */
     public Attraction getCurrentAttraction() {
         return attractions.get(currentIndex);
     }
 
+    /**
+     * moves to next attraction
+     */
     public void moveToNextAttraction() {
         if (currentIndex < attractions.size() - 1) {
             currentIndex++;
@@ -28,6 +51,12 @@ public class AttractionManager implements AttractionManagerInterface {
         }
     }
 
+    /**
+     * returns current AttractionManager, if one exists
+     * if no AttractionManager exists, it creates a new one
+     *
+     * @return current instance of AttractionManager
+     */
     public static AttractionManager getInstance() {
         if (instance == null) {
             instance = new AttractionManager();
@@ -35,12 +64,17 @@ public class AttractionManager implements AttractionManagerInterface {
         return instance;
     }
 
-    // This method is for testing purposes only and resets the singleton instance.
+    /**
+     * for testing purposes only, resets the singleton instance
+     */
     public static void resetInstance() {
         instance = null;
     }
 
-    // Für Testzwecke
+    /**
+     * for testing purposes only, returns mocked AttractionManager
+     * @param mockInstance mocked AttractionManager
+     */
     public static void setInstance(AttractionManager mockInstance) {
         instance = mockInstance;
     }
