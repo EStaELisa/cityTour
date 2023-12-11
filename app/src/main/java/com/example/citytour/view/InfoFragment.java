@@ -43,8 +43,7 @@ public class InfoFragment extends Fragment {
         infoText.setText(currentAttraction.getInfoText());
 
         // Button, to get to the next attraction
-        binding.buttonSecond.setOnClickListener(new ButtonClickListener(this, R.id.action_SecondFragment_to_FirstFragment));
-    }
+        binding.buttonSecond.setOnClickListener(new ButtonClickListener(this));    }
 
     @Override
     public void onDestroyView() {

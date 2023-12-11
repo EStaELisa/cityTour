@@ -5,22 +5,36 @@ import android.view.View;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import com.example.citytour.R;
 import com.example.citytour.controller.AttractionManager;
 
 public class ButtonClickListener implements View.OnClickListener {
     private final Fragment fragment;
-    private final int navigationActionId;
 
-    public ButtonClickListener(Fragment fragment, int navigationActionId) {
+    public ButtonClickListener(Fragment fragment) {
         this.fragment = fragment;
-        this.navigationActionId = navigationActionId;
     }
 
     @Override
     public void onClick(View view) {
-        NavHostFragment.findNavController(fragment).navigate(navigationActionId);
+        int navigationActionId = getNavigationActionId();
+        if (navigationActionId != 0) {
+            NavHostFragment.findNavController(fragment).navigate(navigationActionId);
+        }
+
         if (fragment instanceof InfoFragment) {
             AttractionManager.getInstance().moveToNextAttraction();
         }
     }
+
+    private int getNavigationActionId() {
+        if (fragment instanceof InfoFragment) {
+            return R.id.action_SecondFragment_to_FirstFragment;
+        } else if (fragment instanceof GoToMapFragment) {
+            return R.id.action_FirstFragment_to_SecondFragment;
+        }
+        // no fitting case, no navigation
+        return 0;
+    }
 }
+

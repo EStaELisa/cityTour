@@ -59,7 +59,7 @@ public class GoToMapFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // Changes go to to desired attraction
+        // Displays name of current attraction
         TextView goToText = view.findViewById(R.id.goTo_text);
         Attraction currentAttraction = AttractionManager.getInstance().getCurrentAttraction();
         goToText.setText("Go to " + currentAttraction.getName());
@@ -77,9 +77,11 @@ public class GoToMapFragment extends Fragment {
         getLastKnownLocationAndAddMarker();
 
         // Button to get to the InfoFragment
-        binding.buttonFirst.setOnClickListener(new ButtonClickListener(this, R.id.action_FirstFragment_to_SecondFragment));
+        binding.buttonFirst.setOnClickListener(new ButtonClickListener(this));
     }
 
+    // adds marker on the provided location point
+    // symbol of varies depending on the type
     private void addMarker(double lat, double lon, String type) {
         GeoPoint point = new GeoPoint(lat, lon);
         Marker marker = new Marker(map);
@@ -94,6 +96,8 @@ public class GoToMapFragment extends Fragment {
         map.getOverlays().add(marker);
     }
 
+
+    // resizes object (here marker) to the desired size
     private Drawable resizeDrawable(int drawableId, int width, int height) {
         Drawable image = getResources().getDrawable(drawableId);
         Bitmap b = ((BitmapDrawable)image).getBitmap();
@@ -101,6 +105,7 @@ public class GoToMapFragment extends Fragment {
         return new BitmapDrawable(getResources(), bitmapResized);
     }
 
+    // gets current location and adds a marker there
     private void getLastKnownLocationAndAddMarker() {
         LocationManager locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
         String locationProvider = LocationManager.GPS_PROVIDER;

@@ -46,7 +46,7 @@ public class InfoFragmentTest {
     }
 
     @Test
-    public void buttonNavigatesToFirstFragment() {
+    public void buttonNavigatesToGoToMapFragment() {
         // Set up mock NavController
         NavController mockNavController = mock(NavController.class);
         // Launch the fragment

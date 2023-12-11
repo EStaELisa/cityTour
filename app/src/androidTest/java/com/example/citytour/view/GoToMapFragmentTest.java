@@ -6,6 +6,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -38,15 +39,12 @@ public class GoToMapFragmentTest {
         Attraction testAttraction = new Attraction("Test Attraction", 123, 456, 789);
         when(mockManager.getCurrentAttraction()).thenReturn(testAttraction);
 
-        // Mock LocationManager
-        //LocationManager mockLocationManager = mock(LocationManager.class);
-        //when(mockLocationManager.getLastKnownLocation(anyString())).thenReturn(new Location(LocationManager.GPS_PROVIDER));
-
         // Set the mock manager to the AttractionManager instance
         AttractionManager.setInstance(mockManager);
 
     }
 
+    // test if text is displayed correctly
     @Test
     public void attractionDetailsDisplayedCorrectly() {
         // Launch the fragment
@@ -56,11 +54,11 @@ public class GoToMapFragmentTest {
     }
 
     @Test
-    public void buttonNavigatesToSecondFragment() {
+    public void buttonNavigatesToInfoFragment() {
         // Set up mock NavController
         NavController mockNavController = mock(NavController.class);
         // Launch the fragment
-        FragmentScenario<InfoFragment> scenario = FragmentScenario.launchInContainer(InfoFragment.class);
+        FragmentScenario<GoToMapFragment> scenario = FragmentScenario.launchInContainer(GoToMapFragment.class);
         scenario.onFragment(fragment ->
                 Navigation.setViewNavController(fragment.requireView(), mockNavController)
         );
@@ -72,9 +70,4 @@ public class GoToMapFragmentTest {
         verify(mockNavController).navigate(R.id.action_FirstFragment_to_SecondFragment);
     }
 
-    // Test Karteninitialisierung --> da recht komplex, nur testen, dass map Variable nicht null
-
-    // Test zum überprüfen der Marker --> da recht komplex, nur schauen, dass addMarker Methode funktioniert
-
-    // Test zum Überprüfen der Standort-Berechtigungen (Espresso-Intent-API )
 }
