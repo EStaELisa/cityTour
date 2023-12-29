@@ -39,6 +39,8 @@ public class GoToMapFragment extends Fragment {
     private FragmentFirstBinding binding;
     private MapView map;
 
+
+
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,

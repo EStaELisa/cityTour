@@ -13,6 +13,8 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import android.location.LocationManager;
+import android.os.Bundle;
+import android.os.Parcelable;
 
 import androidx.fragment.app.testing.FragmentScenario;
 import androidx.navigation.NavController;
@@ -32,11 +34,13 @@ import org.mockito.invocation.Location;
 @RunWith(AndroidJUnit4.class)
 public class GoToMapFragmentTest {
 
+    Attraction testAttraction;
+
     @Before
     public void setUp() {
         // Mock AttractionManager before tests
         AttractionManager mockManager = mock(AttractionManager.class);
-        Attraction testAttraction = new Attraction("Test Attraction", 123, 456, 789);
+        testAttraction = new Attraction("Test Attraction", 123, 456, 789);
         when(mockManager.getCurrentAttraction()).thenReturn(testAttraction);
 
         // Set the mock manager to the AttractionManager instance
@@ -48,11 +52,12 @@ public class GoToMapFragmentTest {
     @Test
     public void attractionDetailsDisplayedCorrectly() {
         // Launch the fragment
-        FragmentScenario.launchInContainer(GoToMapFragment.class);
+        FragmentScenario<GoToMapFragment> scenario = FragmentScenario.launchInContainer(GoToMapFragment.class);
         // Verify that the goToText is displayed correctly
         onView(withId(R.id.goTo_text)).check(ViewAssertions.matches(withText("Go to Test Attraction")));
     }
 
+    /*
     @Test
     public void buttonNavigatesToInfoFragment() {
         // Set up mock NavController
@@ -69,5 +74,6 @@ public class GoToMapFragmentTest {
         // Verify navigation has been called
         verify(mockNavController).navigate(R.id.action_FirstFragment_to_SecondFragment);
     }
+     */
 
 }

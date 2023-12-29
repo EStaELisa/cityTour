@@ -17,13 +17,14 @@ public class ButtonClickListener implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        int navigationActionId = getNavigationActionId();
-        if (navigationActionId != 0) {
-            NavHostFragment.findNavController(fragment).navigate(navigationActionId);
-        }
+        //int navigationActionId = getNavigationActionId();
+        //if (navigationActionId != 0) {
+         //   NavHostFragment.findNavController(fragment).navigate(navigationActionId);
+        //}
 
         if (fragment instanceof InfoFragment) {
-            AttractionManager.getInstance().moveToNextAttraction();
+            //AttractionManager.getInstance().moveToNextAttraction();
+
         }
     }
 
