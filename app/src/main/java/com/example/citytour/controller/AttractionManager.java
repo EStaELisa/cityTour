@@ -29,7 +29,21 @@ public class AttractionManager implements AttractionManagerInterface {
      * private constructor to ensure that only one instance of AttractionManager exists
      */
     private AttractionManager() {
-        attractions = AttractionHelper.getDefaultAttractions();
+        this.attractions = AttractionHelper.getDefaultAttractions();
+    }
+
+
+    /**
+     * returns current AttractionManager, if one exists
+     * if no AttractionManager exists, it creates a new one
+     *
+     * @return current instance of AttractionManager
+     */
+    public static AttractionManager getInstance() {
+        if (instance == null) {
+            instance = new AttractionManager();
+        }
+        return instance;
     }
 
     /**
@@ -49,19 +63,6 @@ public class AttractionManager implements AttractionManagerInterface {
         } else {
             instance = null;
         }
-    }
-
-    /**
-     * returns current AttractionManager, if one exists
-     * if no AttractionManager exists, it creates a new one
-     *
-     * @return current instance of AttractionManager
-     */
-    public static AttractionManager getInstance() {
-        if (instance == null) {
-            instance = new AttractionManager();
-        }
-        return instance;
     }
 
     /**

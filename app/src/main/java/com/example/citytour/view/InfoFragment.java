@@ -38,7 +38,7 @@ public class InfoFragment extends Fragment {
         Attraction currentAttraction = AttractionManager.getInstance().getCurrentAttraction();
         goToText.setText(currentAttraction.getName());
 
-        // Get Name Attraction
+        // Get Info Attraction
         TextView infoText = view.findViewById(R.id.info);
         infoText.setText(currentAttraction.getInfoText());
 
